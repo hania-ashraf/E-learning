@@ -6,6 +6,7 @@ export class StudentController {
     constructor( private readonly studentService: StudentService){}
 
     @Get('profile')
+    @Get('profile')
     async getprofile(@Request() req) {
         const userId= req.user.id;
         return this.studentService.getProfile(userId);
