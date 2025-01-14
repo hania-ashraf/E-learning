@@ -24,7 +24,7 @@ import { CourseSchema } from './models/courses.Schema';
     {name: 'quizzes' , schema: QuizSchema},
     {name: 'modules' , schema: ModuleSchema},
     {name: 'courses' , schema: CourseSchema}
-  ])],
+  ]), MongooseModule.forRoot('mongodb://localhost:27017/e-learning')],
   controllers: [AppController, AdminController, StudentController, InstructorController, AuthController],
   providers: [AppService, AdminService, StudentService, InstructorService, AuthService],
 })

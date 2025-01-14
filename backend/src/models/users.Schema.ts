@@ -5,7 +5,7 @@ import { courses } from './courses.Schema';
 
 @Schema({ timestamps: true })
 export class users{
-    @Prop({required: true , unique: true})
+    @Prop()
     user_id: string;
 
     @Prop({required: true})
@@ -14,7 +14,7 @@ export class users{
     @Prop({required: true, unique: true})
     email: string;
 
-    @Prop({required: true})
+    @Prop({required: true, unique:true})
     password: string;
 
     @Prop({required: true , enum: ['student','instructor','admin']}) //enum is to restrict the values of the field 

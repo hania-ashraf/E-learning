@@ -5,14 +5,13 @@ import { StudentService } from './student.service';
 export class StudentController {
     constructor( private readonly studentService: StudentService){}
 
-    @Get('profile')
+    
     @Get('profile')
     async getprofile(@Request() req) {
         const userId= req.user.id;
         return this.studentService.getProfile(userId);
 
     }
-
     @Get('courses')
     async enrolledCourses(@Request() req) {
         const userId= req.user.id;
