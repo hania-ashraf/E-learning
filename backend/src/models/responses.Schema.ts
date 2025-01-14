@@ -6,7 +6,7 @@ export class responses{
     @Prop({ required: true , unique: true })
     response_id: string;
 
-    @Prop({ type: Types.ObjectId, ref: 'users', required: true })
+    @Prop({ type: Types.ObjectId, ref: 'Users', required: true })
     user_Id: Types.ObjectId; 
 
     @Prop({ type: Types.ObjectId, ref: 'quizzes', required: true })

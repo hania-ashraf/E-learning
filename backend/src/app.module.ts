@@ -16,16 +16,20 @@ import { ProgressSchema } from './models/progress.Schema';
 import { QuizSchema } from './models/quizzes.Schema';
 import { ModuleSchema } from './models/modules.Schema';
 import { CourseSchema } from './models/courses.Schema';
+import { AuthModule } from './auth/auth.module';
+import { ChatsModule } from './chats/chats.module';
+import { DiscussionModule } from './discussion/discussion.module';
+import { CoursesModule } from './courses/courses.module';
 
 @Module({
-  imports: [ MongooseModule.forFeature([{ name: 'users', schema: UserSchema },
+  imports: [ MongooseModule.forFeature([{ name: 'Users', schema: UserSchema },
     {name: 'responses' , schema: ResponseSchema},
     {name: 'progress' , schema: ProgressSchema},
     {name: 'quizzes' , schema: QuizSchema},
     {name: 'modules' , schema: ModuleSchema},
     {name: 'courses' , schema: CourseSchema}
-  ]), MongooseModule.forRoot('mongodb://localhost:27017/e-learning')],
-  controllers: [AppController, AdminController, StudentController, InstructorController, AuthController],
-  providers: [AppService, AdminService, StudentService, InstructorService, AuthService],
+  ]), MongooseModule.forRoot('mongodb://localhost:27017/e-learning'), AuthModule, ChatsModule, DiscussionModule, CoursesModule],
+  controllers: [AppController, AdminController, StudentController, InstructorController],
+  providers: [AppService, AdminService, StudentService, InstructorService],
 })
 export class AppModule {}

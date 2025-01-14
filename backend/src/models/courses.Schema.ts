@@ -1,6 +1,6 @@
-import MongooseSchema from 'mongoose';
+import MongooseSchema, { Types } from 'mongoose';
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
-import {users} from './users.Schema';
+
 
 @Schema({ timestamps: true })
 export class courses{
@@ -22,14 +22,27 @@ export class courses{
     @Prop({required: true })
     created_by: string;
 
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'users' })
-    studentTook : users[];
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'modules' })
+    Module: Types.ObjectId[];
 
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'users' })
-    instructorTeach: users[];
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Users' })
+    studentTook : Types.ObjectId[];
+
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Users' })
+    instructorTeach: Types.ObjectId[];
+
+    @Prop({ type: [{ type: Types.ObjectId, ref: 'Users' }], default: [] })
+    completedBy: Types.ObjectId[];
+
+    @Prop({ type: Boolean, default: true })  // New field for availability status For Soft Delete
+    isAvailable: boolean;
+
 
     @Prop({ type: Date })
     createdAt?: Date;
 }
 
 export const CourseSchema = SchemaFactory.createForClass(courses);
+
+
+

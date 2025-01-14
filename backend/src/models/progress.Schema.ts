@@ -1,14 +1,14 @@
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 import { Types } from 'mongoose';
-import {users} from './users.Schema';
+
 
 
 @Schema({ timestamps: true })
 export class progress{
-    @Prop({ required: true , unique: true })
-    progress_id: string;
+    // @Prop({ required: true , unique: true })
+    // progress_id: string;
 
-    @Prop({ type: Types.ObjectId, ref: 'users', required: true })
+    @Prop({ type: Types.ObjectId, ref: 'Users', required: true })
     user_Id: Types.ObjectId; 
 
    @Prop({ type: Types.ObjectId, ref: 'courses', required: true })
